@@ -1,6 +1,7 @@
 package main // import "github.com/ivonofian/shipper/restapi"
 
 import (
+	"fmt"
 	"net/http"
 
 	ghand "github.com/gorilla/handlers"
@@ -10,6 +11,7 @@ import (
 )
 
 func main() {
+	fmt.Println("starting....")
 	conf.ConfigureDB()
 
 	router := mux.NewRouter()
@@ -24,5 +26,6 @@ func main() {
 	originsOk := ghand.AllowedOrigins([]string{"*"})
 	methodsOk := ghand.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "DELETE", "OPTIONS"})
 
+	fmt.Println("start server at localhost:8001")
 	http.ListenAndServe(":8001", ghand.CORS(originsOk, headersOk, methodsOk)(router))
 }

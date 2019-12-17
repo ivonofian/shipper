@@ -13,7 +13,7 @@ var db *sql.DB
 //ConfigureDB ConfigureDB
 func ConfigureDB() {
 	var err error
-	db, err = sql.Open("sqlite3", "../database/godb.db")
+	db, err = sql.Open("sqlite3", "./database/godb.db")
 	if err != nil {
 		fmt.Printf("Error DB %s", err.Error())
 		panic(err.Error())
